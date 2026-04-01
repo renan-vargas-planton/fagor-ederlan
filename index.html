@@ -154,6 +154,26 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
 .pd-action strong{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--forest);display:block;margin-bottom:6px;}
 .pd-action p{font-size:13px;color:var(--dark);line-height:1.6;}
 
+/* ─ MAC Full-Width Section ─ */
+.mac-full-section{
+  background:var(--cream);
+  width:100%;
+  padding:0 0 52px;
+  margin-top:52px;
+}
+.mac-full-section .section-header{
+  max-width:1200px;
+  margin:0 auto;
+  padding:52px 32px 0;
+  margin-bottom:24px;
+}
+.mac-wide-wrap{
+  max-width:1800px;
+  margin:0 auto;
+  padding:0 32px;
+  box-sizing:border-box;
+}
+
 /* ─ Roadmap ─ */
 .roadmap-wrap{overflow-x:auto;}
 #roadmap-svg{display:block;}
@@ -195,6 +215,69 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
 .footer-meta{text-align:right;}
 .footer-meta span{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.25);display:block;line-height:1.9;}
 
+/* ─ Login Screen ─ */
+#login-screen{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 60% 30%, rgba(255,180,60,0.38) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(20,85,55,0.55) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 75%, rgba(10,45,30,0.5) 0%, transparent 45%),
+    linear-gradient(160deg, #0b2a1e 0%, #1a4a2e 30%, #2d6a40 55%, #3d7a4a 70%, #1a3d2a 100%);
+  overflow:hidden;
+}
+#login-screen::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 55% 28%, rgba(255,200,80,0.22) 0%, transparent 40%),
+    radial-gradient(circle at 30% 60%, rgba(60,120,60,0.18) 0%, transparent 35%);
+  pointer-events:none;
+}
+#login-screen::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:45%;
+  background:linear-gradient(to top, rgba(5,20,12,0.55) 0%, transparent 100%);
+  pointer-events:none;
+}
+.login-box{
+  position:relative;z-index:2;
+  background:rgba(5,18,12,0.72);
+  border:1px solid rgba(173,207,120,0.25);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  padding:48px 52px;
+  width:100%;max-width:400px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.55);
+  text-align:center;
+}
+.login-logo{margin-bottom:32px;display:flex;justify-content:center;}
+.login-title{font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--cream);margin-bottom:6px;line-height:1.3;}
+.login-subtitle{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(173,207,120,0.7);margin-bottom:36px;}
+.login-label{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:rgba(247,243,219,0.5);display:block;margin-bottom:10px;}
+#login-input{
+  width:100%;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(173,207,120,0.30);
+  color:var(--cream);
+  font-family:var(--font-mono);font-size:22px;font-weight:600;letter-spacing:.18em;
+  text-align:center;padding:14px 16px;
+  outline:none;transition:border-color .2s;
+}
+#login-input:focus{border-color:var(--accent);}
+#login-input::placeholder{color:rgba(247,243,219,0.20);letter-spacing:.10em;font-size:16px;}
+#login-btn{
+  margin-top:20px;width:100%;
+  background:var(--accent);color:var(--dark);
+  border:none;cursor:pointer;
+  font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px;transition:background .2s,transform .1s;
+}
+#login-btn:hover{background:#c0e08a;}
+#login-btn:active{transform:scale(0.98);}
+#login-error{
+  margin-top:14px;font-family:var(--font-mono);font-size:11px;
+  color:#ff6b6b;min-height:16px;letter-spacing:.04em;opacity:0;transition:opacity .25s;
+}
+#login-error.visible{opacity:1;}
+.login-footer-text{margin-top:28px;font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,0.18);letter-spacing:.08em;text-transform:uppercase;}
+
 /* ─ Responsive ─ */
 @media(max-width:900px){.context-steps{grid-template-columns:1fr;}.context-cols{grid-template-columns:1fr;}.kpi-strip{grid-template-columns:1fr 1fr;}.proj-badges{display:none;}.proj-metrics{grid-template-columns:1fr 1fr;}.proj-body-grid{grid-template-columns:1fr;}.prem-grid{grid-template-columns:1fr;}h2.section-title{font-size:22px;}.header-right{display:none;}.context-section h2{font-size:24px;}}
 @media(max-width:600px){.kpi-strip{grid-template-columns:1fr;}.inner{padding:0 16px;}}
@@ -202,11 +285,36 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
 </head>
 <body>
 
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <svg width="110" height="24" viewBox="0 0 2356 507" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M973.65 296.62H922.75V426.9C922.75 469.1 956.96 503.3 999.15 503.3H1086.24V461.35H973.65V296.62Z" fill="#ADCF78"/>
+        <path d="M1166.71 315.03L1096.74 503.3H1144.25L1160.91 458.88H1260.24L1276.9 503.3H1327.18L1249.75 296.62H1193.19C1181.38 296.62 1170.82 303.96 1166.71 315.03ZM1176.02 418.16L1201.78 348.64C1203.54 343.89 1208.07 340.73 1213.14 340.73H1216.12L1245.12 418.16H1176.02Z" fill="#ADCF78"/>
+        <path d="M1501.67 435.74H1494.88L1408.51 296.62H1341.26V498.66C1341.26 501.22 1343.34 503.3 1345.9 503.3H1387.84V364.18H1394.94L1481.31 503.3H1548.56V305.35C1548.56 300.53 1544.65 296.62 1539.83 296.62H1501.67V435.74Z" fill="#ADCF78"/>
+        <path d="M1572.93 338.57H1650.05V489.93C1650.05 497.31 1656.04 503.3 1663.42 503.3H1700.95V338.57H1760.93L1778.07 296.62H1572.93V338.57Z" fill="#ADCF78"/>
+        <path d="M1910.79 293.84H1900.46C1824.88 293.84 1764.73 330.24 1764.73 395.02V404.89C1764.73 470.29 1824.88 506.07 1900.46 506.07H1910.79C1984.82 506.07 2043.74 470.29 2043.74 404.89V395.02C2043.74 330.24 1984.82 293.84 1910.79 293.84ZM1988.22 404.89C1988.22 440.37 1957.06 459.49 1908.32 459.49H1900.46C1851.72 459.49 1820.56 440.36 1820.56 404.89V395.02C1820.56 359.85 1851.72 340.42 1900.46 340.42H1908.32C1957.06 340.42 1988.22 359.85 1988.22 395.02V404.89Z" fill="#ADCF78"/>
+        <path d="M2228.73 302.03V435.75H2221.94L2135.56 296.63H2068.31V499.53C2068.31 501.62 2070 503.31 2072.09 503.31H2114.89V364.19H2121.99L2208.36 503.31H2275.61V296.63H2234.13C2231.14 296.63 2228.72 299.05 2228.72 302.04L2228.73 302.03Z" fill="#ADCF78"/>
+        <path d="M827.12 296.619H713.6V501.689C713.6 502.579 714.32 503.299 715.21 503.299H764.5V435.429H827.12C882.34 435.429 904.55 411.679 904.55 371.269V360.469C904.55 320.369 882.34 296.619 827.12 296.619ZM853.03 370.039C853.03 387.319 842.85 393.489 822.8 393.489H764.5V338.579H822.8C842.85 338.579 853.03 345.059 853.03 361.719V370.049V370.039Z" fill="#ADCF78"/>
+        <path d="M465.87 0.03H39.25C17.57 0.03 0 17.6 0 39.28V464.05C0 485.73 17.57 503.3 39.25 503.3H92.41L38.89 264.48C34.32 244.1 38.05 222.73 49.34 205.16C54.18 197.63 60.22 189.57 67.62 181.84L76.96 230.88L68.96 180.47C76.72 172.58 85.91 165.1 96.72 158.95L116.95 286.4L100.5 156.89C108.9 152.51 118.22 148.95 128.53 146.6L153.15 340.52L134.57 145.37C141.11 144.22 148.03 143.54 155.34 143.44C157.55 143.41 159.74 143.44 161.93 143.5L185.73 393.42L169.89 143.9C178.78 144.56 187.47 145.9 195.91 147.78L214.79 445.19L205.42 150.15C213.81 152.46 221.93 155.27 229.73 158.43L240.45 496.02V163.07C248.29 166.68 255.75 170.6 262.79 174.65V503.29H264.15L274.36 181.63C281.7 186.27 288.46 190.94 294.59 195.41L284.82 503.29H287.75L306.72 204.57C314.32 210.51 320.42 215.61 324.8 219.1L306.76 503.29H311.24L337.43 228.24C342.01 231.43 347.48 235.12 353.77 238.91L328.59 503.28H334.61L367.23 246.42C371.87 248.8 376.82 251.12 382.07 253.28L350.32 503.28H357.89L396.73 258.57C401.07 259.92 405.57 261.14 410.23 262.16L371.96 503.28H381.07L426.49 264.84C428.6 265.08 430.73 265.29 432.89 265.44C434.95 265.58 436.9 265.61 438.78 265.55L393.5 503.28H406.31L460.62 258.88C468.55 254.02 472.86 247.2 475.02 242.54L417.08 503.27H465.89C487.57 503.27 505.14 485.7 505.14 464.02V39.25C505.14 17.57 487.57 0 465.89 0L465.87 0.03Z" fill="#ADCF78"/>
+      </svg>
+    </div>
+    <div class="login-title">Curva MAC — Fagor Ederlan</div>
+    <div class="login-subtitle">Documento Confidencial · Planton</div>
+    <label class="login-label" for="login-input">Código de Acesso</label>
+    <input id="login-input" type="text" inputmode="numeric" maxlength="8" placeholder="_ _ . _ _ _" autocomplete="off" spellcheck="false">
+    <div id="login-error">Código incorreto. Tente novamente.</div>
+    <button id="login-btn">Acessar</button>
+    <div class="login-footer-text">Fagor Ederlan Brasileira · Abril 2026</div>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="inner">
     <div class="header-left">
-      <svg width="108" height="23" viewBox="0 0 2356 507" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="119" height="25" viewBox="0 0 2356 507" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M973.65 296.62H922.75V426.9C922.75 469.1 956.96 503.3 999.15 503.3H1086.24V461.35H973.65V296.62Z" fill="#ADCF78"/>
         <path d="M1166.71 315.03L1096.74 503.3H1144.25L1160.91 458.88H1260.24L1276.9 503.3H1327.18L1249.75 296.62H1193.19C1181.38 296.62 1170.82 303.96 1166.71 315.03ZM1176.02 418.16L1201.78 348.64C1203.54 343.89 1208.07 340.73 1213.14 340.73H1216.12L1245.12 418.16H1176.02Z" fill="#ADCF78"/>
         <path d="M1501.67 435.74H1494.88L1408.51 296.62H1341.26V498.66C1341.26 501.22 1343.34 503.3 1345.9 503.3H1387.84V364.18H1394.94L1481.31 503.3H1548.56V305.35C1548.56 300.53 1544.65 296.62 1539.83 296.62H1501.67V435.74Z" fill="#ADCF78"/>
@@ -223,7 +331,7 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
       </div>
     </div>
     <div class="header-right">
-      <strong>Março 2026</strong>
+      <strong>Abril 2026</strong>
       <span>GHG Protocol · Controle Operacional</span>
       <span>CRF · WACC 10% · Vida útil 15 anos</span>
     </div>
@@ -236,12 +344,12 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
     <span class="eyebrow">Descarbonização Corporativa</span>
     <h2>Do inventário à ação: escolha os projetos certos para reduzir emissões</h2>
     <div class="context-cols">
-      <p>Com o Inventário de Emissões GHG 2024 concluído, a Fagor Ederlan tem uma visão completa de sua pegada de carbono: <strong style="color:var(--accent)">23.963 tCO₂e/ano</strong>, distribuídos entre operações diretas (Escopo 1), energia elétrica (Escopo 2) e cadeia de valor (Escopo 3). O próximo passo é transformar esse diagnóstico em uma jornada concreta de descarbonização.</p>
+      <p>Com o Inventário de Emissões GHG 2024 concluído, a Fagor Ederlan tem uma visão completa de suas emissões de carbono: <strong style="color:var(--accent)">23.963 tCO₂e/ano</strong>, distribuídos entre operações diretas (Escopo 1), energia elétrica (Escopo 2) e cadeia de valor (Escopo 3). O próximo passo é transformar esse diagnóstico em uma jornada concreta de descarbonização.</p>
       <p>A <strong style="color:var(--cream)">Curva MAC</strong> (Custo Marginal de Abatimento) é a ferramenta que torna essa escolha objetiva. Ela ordena cada projeto pelo seu custo por tonelada de CO₂ evitada, comparando iniciativas muito diferentes — logística, energia, frota — em uma única escala econômica. Projetos com MAC negativo têm retorno financeiro: custam menos do que economizam.</p>
     </div>
     <div class="context-steps">
       <div class="context-step">
-        <div class="step-num">Passo 1 — Concluído</div>
+        <div class="step-num">Passo 1 — Concluído <span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;background:var(--accent);border-radius:50%;margin-left:5px;vertical-align:middle;" title="Etapa concluída"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1,4 3,6.5 7,1.5" stroke="#0A2D30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         <div class="step-title">Inventário GHG 2024</div>
         <div class="step-text">Quantificação de todas as emissões de Escopos 1, 2 e 3. Qualidade de dados auditável, registrado no PBGHG. Este documento é o ponto de partida.</div>
       </div>
@@ -376,14 +484,15 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
   </details>
 
   <!-- MAC CURVE -->
-  <section class="section" id="sec-mac">
+</div><!-- /.inner -->
+<section class="mac-full-section" id="sec-mac">
     <div class="section-header">
       <span class="eyebrow">Análise Principal</span>
       <h2 class="section-title">Curva de Custo Marginal de Abatimento
         <span class="gls" tabindex="0">i<span class="gls-popup"><span class="gls-title">O que é MAC?</span>Custo por tonelada de CO₂e evitada: (CAPEX × CRF + ΔOpex) / Redução anual. MAC negativo = retorno financeiro positivo.</span></span>
       </h2>
     </div>
-    <div class="card" style="padding:32px;">
+    <div class="mac-wide-wrap"><div class="card" style="padding:32px;">
       <p class="chart-subtitle">
         <strong>Largura da barra</strong> = potencial de redução anual (tCO₂e/ano) &nbsp;·&nbsp;
         <strong>Altura</strong> = custo marginal de abatimento (R$/tCO₂e) &nbsp;·&nbsp;
@@ -397,8 +506,9 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
         <div class="legend-item"><div class="legend-swatch" style="background:#0A2D30;"></div>Escopo 3 (MAC ≥ 0)</div>
         <div class="legend-item" style="margin-left:8px;"><svg width="28" height="14"><line x1="0" y1="7" x2="28" y2="7" stroke="#CC5500" stroke-width="2" stroke-dasharray="5,3"/></svg>Preço carbono referência (R$ 50/tCO₂e)</div>
       </div>
-    </div>
-  </section>
+    </div></div><!-- /.mac-wide-wrap -->
+</section>
+<div class="inner">
 
   <!-- PROJECTS -->
   <section class="section" id="sec-projects">
@@ -425,7 +535,7 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
         <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--forest);"><div style="width:28px;height:12px;background:var(--accent);"></div>Fase 1 — Quick wins (MAC &lt; 0)</div>
         <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--forest);"><div style="width:28px;height:12px;background:var(--forest);"></div>Fase 2 — Esc. 1 / Esc. 2</div>
         <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--forest);"><div style="width:28px;height:12px;background:var(--dark);"></div>Fase 2 — Escopo 3</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#CC5500;"><svg width="20" height="12"><line x1="0" y1="6" x2="20" y2="6" stroke="#CC5500" stroke-width="2" stroke-dasharray="4,3"/></svg>Hoje — Mar/2026</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#CC5500;"><svg width="20" height="12"><line x1="0" y1="6" x2="20" y2="6" stroke="#CC5500" stroke-width="2" stroke-dasharray="4,3"/></svg>Hoje — Abr/2026</div>
       </div>
       <div class="roadmap-wrap">
         <svg id="roadmap-svg"></svg>
@@ -433,7 +543,7 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
     </div>
   </section>
 
-</div>
+</div><!-- /.inner -->
 </main>
 
 <!-- FOOTER -->
@@ -445,7 +555,7 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
     </div>
     <div class="footer-meta">
       <span>planton.eco.br</span>
-      <span>Março 2026</span>
+      <span>Abril 2026</span>
       <span>GHG Protocol · CRF · WACC 10% · 15 anos</span>
       <span>Documento confidencial</span>
     </div>
@@ -455,6 +565,32 @@ h2.section-title{font-family:var(--font-heading);font-size:28px;font-weight:700;
 <div class="tooltip" id="tooltip"></div>
 
 <script>
+// ═══════════════════ LOGIN ═══════════════════
+(function(){
+  const CODE = "61082";
+  const screen = document.getElementById('login-screen');
+  const input  = document.getElementById('login-input');
+  const btn    = document.getElementById('login-btn');
+  const err    = document.getElementById('login-error');
+
+  function tryLogin(){
+    const val = input.value.trim();
+    if(val === CODE){
+      screen.style.transition = "opacity 0.5s ease";
+      screen.style.opacity = "0";
+      setTimeout(()=>{ screen.style.display = "none"; }, 500);
+    } else {
+      err.classList.add("visible");
+      input.style.borderColor = "#ff6b6b";
+      setTimeout(()=>{ err.classList.remove("visible"); input.style.borderColor = ""; }, 2200);
+      input.select();
+    }
+  }
+
+  btn.addEventListener('click', tryLogin);
+  input.addEventListener('keydown', e=>{ if(e.key === 'Enter') tryLogin(); });
+})();
+
 // ═══════════════════ DATA ═══════════════════
 const WACC=0.10, N=15;
 const CRF=WACC*Math.pow(1+WACC,N)/(Math.pow(1+WACC,N)-1);
@@ -688,14 +824,14 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 
 // ═══════════════════ ROADMAP ═══════════════════
 const ROADMAP=[
-  {id:"P01",name:"E-Coat 8→6 Estágios",    fase:1,start:2, dur:6,  mac:-4134,col:"#ADCF78",tc:"#0A2D30"},
-  {id:"P05",name:"Frota → Etanol",          fase:1,start:2, dur:3,  mac:183,  col:"#ADCF78",tc:"#0A2D30"},
-  {id:"P02",name:"GLP → Gás Natural",       fase:1,start:2, dur:12, mac:-223, col:"#ADCF78",tc:"#0A2D30"},
-  {id:"P03",name:"Logística Upstream",       fase:1,start:5, dur:18, mac:-105, col:"#3a7a5e",tc:"white"},
-  {id:"P08",name:"Frota Elétrica",           fase:2,start:14,dur:12, mac:3053, col:"#145559",tc:"white"},
-  {id:"P04",name:"Gusa Verde",               fase:2,start:14,dur:24, mac:4,    col:"#0A2D30",tc:"#ADCF78"},
-  {id:"P07",name:"Eletrif. E-Coat",          fase:2,start:14,dur:24, mac:716,  col:"#145559",tc:"white"},
-  {id:"P06",name:"GLP → Biometano",          fase:2,start:14,dur:30, mac:21,   col:"#145559",tc:"white"},
+  {id:"P01",name:"E-Coat 8→6 Estágios",    fase:1,start:3, dur:6,  mac:-4134,col:"#ADCF78",tc:"#0A2D30"},
+  {id:"P05",name:"Frota → Etanol",          fase:1,start:3, dur:3,  mac:183,  col:"#ADCF78",tc:"#0A2D30"},
+  {id:"P02",name:"GLP → Gás Natural",       fase:1,start:3, dur:12, mac:-223, col:"#ADCF78",tc:"#0A2D30"},
+  {id:"P03",name:"Logística Upstream",       fase:1,start:6, dur:18, mac:-105, col:"#3a7a5e",tc:"white"},
+  {id:"P08",name:"Frota Elétrica",           fase:2,start:15,dur:12, mac:3053, col:"#145559",tc:"white"},
+  {id:"P04",name:"Gusa Verde",               fase:2,start:15,dur:24, mac:4,    col:"#0A2D30",tc:"#ADCF78"},
+  {id:"P07",name:"Eletrif. E-Coat",          fase:2,start:15,dur:24, mac:716,  col:"#145559",tc:"white"},
+  {id:"P06",name:"GLP → Biometano",          fase:2,start:15,dur:30, mac:21,   col:"#145559",tc:"white"},
 ];
 
 function buildRoadmap(){
@@ -715,15 +851,15 @@ function buildRoadmap(){
   const xs=d3.scaleLinear().domain([0,MONTHS]).range([0,chartW]);
 
   // ── Phase background bands ──
-  // Fase 1 zone: months 2-23
-  g.append("rect").attr("x",xs(2)).attr("y",-HEADER_H).attr("width",xs(23)-xs(2)).attr("height",HEADER_H+rowsH+2)
+  // Fase 1 zone: months 3-24
+  g.append("rect").attr("x",xs(3)).attr("y",-HEADER_H).attr("width",xs(24)-xs(3)).attr("height",HEADER_H+rowsH+2)
     .attr("fill","rgba(173,207,120,0.06)");
-  // Fase 2 zone: months 14-45
-  g.append("rect").attr("x",xs(14)).attr("y",-HEADER_H).attr("width",xs(45)-xs(14)).attr("height",HEADER_H+rowsH+2)
+  // Fase 2 zone: months 15-45
+  g.append("rect").attr("x",xs(15)).attr("y",-HEADER_H).attr("width",xs(45)-xs(15)).attr("height",HEADER_H+rowsH+2)
     .attr("fill","rgba(20,85,89,0.05)");
 
   // ── Phase label row (top) ──
-  const ph1MidX=xs(12.5), ph2MidX=xs(29.5);
+  const ph1MidX=xs(13.5), ph2MidX=xs(30);
   g.append("text").attr("x",ph1MidX).attr("y",-HEADER_H+14)
     .attr("text-anchor","middle").attr("font-family","'Geist Mono',monospace")
     .attr("font-size",9).attr("font-weight","700").attr("fill","rgba(173,207,120,0.9)")
@@ -760,8 +896,8 @@ function buildRoadmap(){
     }
   }
 
-  // ── Today marker (Mar 2026 = month 2) ──
-  const todayX=xs(2);
+  // ── Today marker (Abr 2026 = month 3) ──
+  const todayX=xs(3);
   g.append("line").attr("x1",todayX).attr("x2",todayX).attr("y1",-HEADER_H+20).attr("y2",rowsH)
     .attr("stroke","#CC5500").attr("stroke-width",2).attr("stroke-dasharray","4,3");
   // "Hoje" chip centered on the line — placed above year labels
@@ -770,7 +906,7 @@ function buildRoadmap(){
   g.append("text").attr("x",todayX).attr("y",-HEADER_H+28)
     .attr("text-anchor","middle")
     .attr("font-family","'Geist Mono',monospace").attr("font-size",9).attr("font-weight","600")
-    .attr("fill","white").text("Mar/26");
+    .attr("fill","white").text("Abr/26");
 
   // ── Bar rows ──
   ROADMAP.forEach((row,i)=>{
